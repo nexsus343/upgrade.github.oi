@@ -2621,8 +2621,8 @@
             navMenu.classList.toggle('show');
         });
         
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+         // Smooth scrolling for anchor links
+         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 
@@ -2638,6 +2638,51 @@
                 }
             });
         });
+        // Price calculator functions
+            function calculatePrice() {
+                const size = document.getElementById("sizeSelect").value;
+                const style = document.getElementById("styleSelect").value;
+                const complexity =
+                    document.getElementById("complexitySelect").value;
+
+                if (!size || !style || !complexity) {
+                    alert("Будь ласка, оберіть всі параметри");
+                    return;
+                }
+
+                const sizes = {
+                    small: 1,
+                    medium: 1.5,
+                    large: 2.5,
+                    xlarge: 4,
+                };
+
+                const styles = {
+                    minimalism: 1500,
+                    traditional: 2000,
+                    realism: 2500,
+                    ornamental: 2200,
+                    geometric: 1800,
+                };
+
+                const complexities = {
+                    simple: 1,
+                    medium: 1.3,
+                    complex: 1.7,
+                };
+
+                const basePrice = styles[style];
+                const sizeMultiplier = sizes[size];
+                const complexityMultiplier = complexities[complexity];
+
+                const total = Math.round(
+                    basePrice * sizeMultiplier * complexityMultiplier,
+                );
+
+                document.getElementById("priceAmount").textContent =
+                    total.toLocaleString() + " ₴";
+                document.getElementById("priceResult").classList.add("show");
+            }
         
         // Animation on scroll
         const animateOnScroll = () => {
