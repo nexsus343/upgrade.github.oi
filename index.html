@@ -2767,6 +2767,19 @@ ${message}`;
                 }, 3000);
             });
         });
+           // FAQ functions
+            function toggleFAQ(element) {
+                const faqItem = element.parentElement;
+                const icon = element.querySelector("i");
+
+                faqItem.classList.toggle("active");
+
+                if (faqItem.classList.contains("active")) {
+                    icon.className = "fas fa-chevron-up";
+                } else {
+                    icon.className = "fas fa-chevron-down";
+                }
+            }
     </script>
 </body>
 </html>
